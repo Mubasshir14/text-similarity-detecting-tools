@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Comparison Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: MediumSeaGreen;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to right, rgba(4, 170, 109, 0), rgba(4, 170, 109, 1));
+        }
+
+        .container {
+            width: 40%;
+            margin: auto;
+            background-color: #fff;
+            padding: 15px; /* Adjusted padding */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="file"]:hover,
+        input[type="submit"]:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+                        0 8px 16px rgba(0, 0, 0, 0.1),
+                        0 12px 24px rgba(0, 0, 0, 0.1);
+            outline: MediumSeaGreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #71BC78;">Text Comparison Tool</h1>
+        <form action="{{ url_for('compare') }}" method="post" enctype="multipart/form-data">
+            <label for="source_file"><h2 style="color: #4F7942;">Upload Source Files</h2></label><br>
+            <input type="file" id="source_file" name="source_file"><br><br>
+
+            <h2 style="color: #4F7942;">Upload Target Files</h2>
+            {% for i in range(5) %}
+            <label style="color: #17B169;" for="target_file_{{ i }}">Target File {{ i + 1 }}</label><br>
+            <input type="file" id="target_file_{{ i }}" name="target_file_{{ i }}"><br><br>
+            {% endfor %}
+
+            <input style="background-color: #04AA6D;
+                          border: none;
+                          color: white;
+                          padding: 15px 32px;
+                          text-align: center;
+                          text-decoration: none;
+                          display: inline-block;
+                          font-size: 16px;" type="submit" value="Compare">
+        </form>
+    </div>
+</body>
+</html>

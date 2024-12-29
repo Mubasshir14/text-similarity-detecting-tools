@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D0F0C0; /* Light gray background */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #007bff; /* Blue color */
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff; /* White background for the table */
+            border-radius: 5px;
+            overflow: hidden; /* Hide overflowing content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #66CDAA;
+        }
+        tr:nth-child(odd) {
+            background-color: #8FBC8B; /* Light gray background for even rows */
+        }
+        tr:hover {
+            background-color: #ddd; /* Darker gray background on hover */
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-shadow: 10px 5px  5px #8FBC8B;font-size: 40px; color: #006400;">Comparison Results</h1>
+    <table border="1">
+        <tr>
+            <th style="background-color: #8FBC8B;font-size: 2em; text-align: center;">Target File</th>
+            <th style="background-color: #8FBC8B;font-size: 2em; text-align: center;">Similarity (%)</th>
+            <th style="background-color: #8FBC8B;font-size: 2em; text-align: center;">Similar Lines</th>
+            <th style="background-color: #8FBC8B;font-size: 2em; text-align: center;">Occurrences</th>
+        </tr>
+        {% for result in similarity_results %}
+        <tr>
+            <td style="text-align: center; font-size: 1.5em;">{{ result[0] }}</td>
+            <td style="text-align: center; font-size: 1.5em;">{{ result[1]|float|round(2) }}%</td>
+            <td>
+                {% if result[2] %}
+                <ul>
+                    {% for line, occurrences in result[2].items() %}
+                    <li>{{ line }} ({{ occurrences }} times)</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                No similar lines found.
+                {% endif %}
+            </td>
+            <td style="text-align: center; font-size: 1.5em;">{{ result[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h1 style="text-shadow: 2px 5px 5px #8FBC8B;font-size: 40px; color: #006400;">Average Similarity: {{ average_similarity }}%</h1> <!-- Display average similarity -->
+</body>
+</html>

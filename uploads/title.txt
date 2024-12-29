@@ -1,0 +1,6 @@
+Enter path for source file 1: C:\Users\Pedp4WPBX5105GRF0522\Downloads\Where are you from.txt
+Enter path for source file 2: C:\Users\Pedp4WPBX5105GRF0522\Downloads\Where are you from.pdf
+Enter path for source file 3: C:\Users\Pedp4WPBX5105GRF0522\Downloads\Where are you from.docx
+Enter path for source file 4: C:\Users\Pedp4WPBX5105GRF0522\Downloads\I am from Gaibandha..txt
+Enter path for source file 5: C:\Users\Pedp4WPBX5105GRF0522\Downloads\I am from Gaibandha.pdf
+Enter path for target file: C:\Users\Pedp4WPBX5105GRF0522\Downloads\I am from Gaibandha.docx
